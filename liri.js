@@ -40,9 +40,10 @@ run();
 function run() {
 
     if (input1 === "my-tweets") {
-
+// pulls the data from my tweeter account. 
         client.get('statuses/user_timeline', params, function(error, tweets, response) {
             if (!error) {
+                // console logs the last 20 
                 console.log('');
                 console.log('My Last 20 Tweets: ');
                 console.log('--------------------------');
@@ -68,7 +69,7 @@ function run() {
             input2 = "The Sing by Ace of Base";
         };
 
-        spotify.search({ type: 'track', query: input2 }, function(err, data) {
+        spotify.search({type: 'track', query: input2 }, function(err, data) {
             if (err) {
                 console.log('Error occurred: ' + err);
                 return;
@@ -76,10 +77,10 @@ function run() {
             console.log('');
             console.log('Spotify Song Information Results: ');
             console.log('--------------------------');
-            // console.log("Artist(s): " + data.tracks.items[0].artists[0].name);
-            console.log("Track Title: " + data.tracks.items[0].name);
-            console.log("Link to Song: " + data.tracks.items[0].preview_url);
-            console.log("Album Title: " + data.tracks.items[0].album.name);
+            console.log("Artist: " + data);
+            // console.log("Track Title: " + data.name);
+            // console.log("Link to Song: " + data.tracks.items[0].preview_url);
+            // console.log("Album Title: " + data.tracks.items[0].album.name);
             console.log('--------------------------');
         });
 
@@ -98,7 +99,7 @@ function run() {
             // If the request is successful (i.e. if the response status code is 200)
             if (!error && response.statusCode === 200) {
 
-                // console.log(JSON.parse(body))
+                // logs the movie information for the one selected. 
                 console.log('');
                 console.log('OMDB Movie Information: ');
                 console.log('--------------------------');
@@ -114,7 +115,7 @@ function run() {
                 console.log('--------------------------');
             } else {
 
-                console.log(error);
+                console.log("This broke ma dude");
 
             }
 
@@ -122,6 +123,7 @@ function run() {
 
         log();
 
+// Read the text thats in the ramdon file. 
     } else if (input1 === "do-what-it-says") {
 
         log();
