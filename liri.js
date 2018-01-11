@@ -2,11 +2,15 @@
 
 var fs = require('fs');
 var Twitter = require('twitter');
-var spotify = require('spotify');
+var Spotify = require('node-spotify-api');
 var omdb = require('omdb');
 var request = require('request');
 var input1 = process.argv[2];
 var input2 = process.argv.splice(3).join(" ");
+var spotify = new Spotify({
+  id: "cef63e24143248a1b9f46a97ba86f361",
+  secret: '3c52cb8e230d4f578d81c99540740e42'
+});
 
 function log() {
 
@@ -43,7 +47,7 @@ function run() {
 // pulls the data from my tweeter account. 
         client.get('statuses/user_timeline', params, function(error, tweets, response) {
             if (!error) {
-                // console logs the last 20 
+                // console logs the last 5
                 console.log('');
                 console.log('My Last 20 Tweets: ');
                 console.log('--------------------------');
@@ -71,16 +75,16 @@ function run() {
 
         spotify.search({type: 'track', query: input2 }, function(err, data) {
             if (err) {
-                console.log('Error occurred: ' + err);
+                console.log('Its possible this song doesnt exist.');
                 return;
             }
             console.log('');
             console.log('Spotify Song Information Results: ');
             console.log('--------------------------');
-            console.log("Artist: " + data);
-            // console.log("Track Title: " + data.name);
-            // console.log("Link to Song: " + data.tracks.items[0].preview_url);
-            // console.log("Album Title: " + data.tracks.items[0].album.name);
+            console.log("Artist: " + data.tracks.items[0].artists[0].name); 
+            console.log("Song name: " + data.tracks.items[0].name);
+            console.log("Spotify Link: " + data.tracks.items[0].external_urls.spotify);    
+            console.log("Album Title: " + data.tracks.items[0].album.name);
             console.log('--------------------------');
         });
 
