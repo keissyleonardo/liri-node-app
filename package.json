@@ -23,6 +23,7 @@
     "omdb": "^0.8.0",
     "request": "^2.83.0",
     "spotify": "^0.3.0",
+    "spotify-web-api-js": "^0.23.0",
     "twitter": "^1.7.1"
   }
 }

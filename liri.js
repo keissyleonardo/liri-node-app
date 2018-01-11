@@ -19,7 +19,7 @@ function log() {
 
         // log if no error. 
         else {
-            console.log("No issue appending random text file");
+            console.log("Updated!");
         }
 
     });
@@ -47,7 +47,7 @@ function run() {
                 console.log('My Last 20 Tweets: ');
                 console.log('--------------------------');
                 tweets.forEach(function(individualTweet) {
-                    console.log('Time: ' + individualTweet.created_at);
+                    console.log('Date & Time: ' + individualTweet.created_at);
                     console.log(individualTweet.text);
                     console.log('--------------------------');
 
@@ -109,8 +109,8 @@ function run() {
                 console.log("Language: " + JSON.parse(body).Language);
                 console.log("Movie Plot: " + JSON.parse(body).Plot);
                 console.log("Actor(s): " + JSON.parse(body).Actors);
-                console.log("Rotten Tomatoes Rating: " + JSON.parse(body).tomatoRating);
-                console.log("Rotten Tomatoes URL: " + JSON.parse(body).tomatoURL);
+                console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+                console.log("Rotten Tomatoes URL: " + JSON.parse(body).Ratings[2].Value);
                 console.log('--------------------------');
             } else {
 
@@ -128,13 +128,13 @@ function run() {
 
         fs.readFile('random.txt', 'utf8', function(err, data) {
             if (err) throw err;
-            // console.log(data);
+            console.log(data);
 
             var arr = data.split(',');
 
-            input1 = arr[0].trim();
-            input2 = arr[1].trim();
-            run();
+            // input1 = arr[0].trim();
+            // input2 = arr[1].trim();
+            // run();
 
         });
 
