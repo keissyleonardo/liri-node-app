@@ -7,6 +7,7 @@ var omdb = require('omdb');
 var request = require('request');
 var input1 = process.argv[2];
 var input2 = process.argv.splice(3).join(" ");
+var inquirer = require('inquirer');
 var spotify = new Spotify({
   id: "cef63e24143248a1b9f46a97ba86f361",
   secret: '3c52cb8e230d4f578d81c99540740e42'
@@ -62,7 +63,7 @@ function run() {
             } else {
                 console.log(error);
             };
-        });
+        });//end of tweets
 
         log();
 
@@ -86,7 +87,9 @@ function run() {
             console.log("Spotify Link: " + data.tracks.items[0].external_urls.spotify);    
             console.log("Album Title: " + data.tracks.items[0].album.name);
             console.log('--------------------------');
-        });
+
+        });// end of spotify 
+
 
         log();
 
@@ -123,7 +126,7 @@ function run() {
 
             }
 
-        });
+        }); // end of imdb 
 
         log();
 
